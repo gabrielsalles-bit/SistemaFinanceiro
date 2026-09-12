@@ -78,10 +78,13 @@ salva em [`docs/test-evidence/`](docs/test-evidence/).
 
 ## Documentação
 
+Índice completo em [`docs/README.md`](docs/README.md) — comece por lá para
+navegar por toda a documentação do projeto. Atalhos diretos:
+
 - [`docs/spec/ESPECIFICACAO.md`](docs/spec/ESPECIFICACAO.md) — especificação
   técnica: requisitos funcionais/não funcionais, decomposição do sistema,
   modelo de dados e histórico de refinamento.
-- [`docs/adr/`](docs/adr/) — Architecture Decision Records: por que
+- [`docs/adr/`](docs/adr/README.md) — Architecture Decision Records: por que
   Next.js, por que Supabase, por que lançamento manual em vez de Open
   Finance, por que PIN local em vez de autenticação de servidor, por que a
   lógica de cálculo é isolada em módulos puros, e o que ficou fora de
