@@ -1,8 +1,8 @@
 # Relatório técnico-ético: uso de agentes de IA no ciclo de vida do projeto
 
-> **Como ler este relatório.** O projeto foi desenvolvido de forma
-> individual e **só o Claude Code foi usado em todo o ciclo**. O
-> Antigravity entra na comparação pela avaliação de uso do autor, não por
+> **Como ler este relatório.** **Só o Claude Code foi usado em todo o
+> ciclo de desenvolvimento deste repositório**. O
+> Antigravity entra na comparação pela avaliação de uso do grupo, não por
 > ter sido usado neste repositório. Codex CLI e Cursor não foram usados e
 > por isso não são avaliados. As afirmações sobre o Claude Code apontam
 > para evidências (commits, testes, ADRs).
@@ -100,7 +100,7 @@ Aprovar um PR sem ler o diff transfere a responsabilidade para a máquina, e
 
 ## 6. Relato de experiência (comunicação técnica)
 
-O trabalho foi individual, conduzido com o Claude Code seguindo
+O desenvolvimento foi conduzido com o Claude Code seguindo
 Especificação Dirigida por Testes: especificação primeiro, depois tarefas
 pequenas, cada uma com implementação e revisão antes da seguinte.
 
@@ -120,6 +120,6 @@ pequenas, cada uma com implementação e revisão antes da seguinte.
 - Ajustar a spec quando a regra de cobertura se mostrou ampla demais (v3.1).
 
 **Aprendizado central:** a IA acelera, mas a qualidade vem de teste, spec
-clara e revisão humana. Por ser trabalho individual, a revisão foi feita
-pelo próprio autor, o que é uma limitação reconhecida: não há segunda
-pessoa conferindo.
+clara e revisão humana. A revisão dos PRs foi feita pelo autor de cada
+PR, com o checklist do template; não há review entre pares registrado
+no GitHub, o que é uma limitação reconhecida.
