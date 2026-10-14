@@ -29,8 +29,10 @@ da correção, não apenas o patch isolado.
   de poupança) deve ser uma função pura testável nesse diretório — ver
   [ADR 0005](docs/adr/0005-logica-pura-separada-para-testabilidade.md) para
   o motivo.
-- **Toda função pública em `src/utils/` precisa de teste cobrindo pelo
-  menos um caso de borda.** Rode `npm run test` antes de considerar
+- **Toda função pura pública em `src/utils/` precisa de teste cobrindo pelo
+  menos um caso de borda** (exceção documentada: I/O com `File`, como
+  `parseCSVFile`/`parseXLSXFile`, e dados de apresentação, como
+  `categoryIcons` — ver RNF06 na especificação). Rode `npm run test` antes de considerar
   qualquer mudança em `src/utils/` concluída.
 - **Não reintroduzir dependências pagas.** O projeto existe para provar que
   dá para ter um app de finanças completo com custo operacional zero — ver

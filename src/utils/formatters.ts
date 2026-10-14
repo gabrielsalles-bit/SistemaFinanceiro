@@ -19,13 +19,10 @@ export function formatCurrency(value: number, hide = false): string {
  */
 export function formatDate(dateString: string): string {
   if (!dateString) return '00/00/00';
-  try {
-    const [year, month, day] = dateString.split('-');
-    if (!year || !month || !day) return dateString;
-    return `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${year.slice(-2)}`;
-  } catch {
-    return dateString;
-  }
+  const match = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(dateString);
+  if (!match) return dateString;
+  const [, year, month, day] = match;
+  return `${day.padStart(2, '0')}/${month.padStart(2, '0')}/${year.slice(-2)}`;
 }
 
 /**
