@@ -16,8 +16,10 @@ passados, e comparação usando meses futuros).
 Toda a lógica de cálculo financeiro e de parsing vive em `src/utils/` como
 funções puras (mesma entrada → mesma saída, sem acesso a rede, DOM ou
 banco), separada dos componentes de UI e dos serviços de acesso a dados.
-Cada função pública nesses módulos tem teste automatizado cobrindo pelo
-menos um caso de borda.
+Cada função **pura** exportada nesses módulos tem teste automatizado
+cobrindo pelo menos um caso de borda; funções de I/O com `File`
+(`parseCSVFile`, `parseXLSXFile`) e dados de apresentação ficam fora da
+suíte unitária (ver RNF06 na especificação, v3.1).
 
 ## Alternativas consideradas
 - **Cálculo feito inline dentro dos componentes React**: era o padrão
