@@ -1,27 +1,31 @@
 # Relatório técnico-ético: uso de agentes de IA no ciclo de vida do projeto
 
-> **Como ler este relatório.** As afirmações sobre o Claude Code vêm da
-> experiência direta neste repositório e apontam para evidências (commits,
-> testes, ADRs). Os campos marcados **[PREENCHER PELO GRUPO]** só devem ser
-> preenchidos por quem de fato usou a ferramenta. Não preencha por
-> suposição: um relatório crítico perde o valor se descrever ferramentas
-> que ninguém testou.
+> **Como ler este relatório.** O projeto foi desenvolvido de forma
+> individual e **só o Claude Code foi usado em todo o ciclo**. O
+> Antigravity entra na comparação pela avaliação de uso do autor, não por
+> ter sido usado neste repositório. Codex CLI e Cursor não foram usados e
+> por isso não são avaliados. As afirmações sobre o Claude Code apontam
+> para evidências (commits, testes, ADRs).
 
 ## 1. Análise comparativa de ferramentas
 
-| Critério | Claude Code | Codex CLI | Cursor | Antigravity |
-|---|---|---|---|---|
-| Usada neste projeto? | Sim (todo o ciclo) | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] |
-| Interface | CLI/extensão de IDE com acesso a arquivos, shell e git | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] |
-| Pontos fortes observados | Lê o repositório inteiro, roda testes e build, respeita regras do `CLAUDE.md`, produz commits atômicos | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] |
-| Limitações observadas | Gerou 2 defeitos de cálculo (E1, E2) que só a revisão humana pegou; precisa de regras explícitas para não commitar segredos nem ir direto à `main`; não verifica o que existe só no GitHub (CI, branch protection) sem o `gh` instalado | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] |
-| Impacto na especificação | Ajudou a decompor requisitos e manter ADRs; a spec só ficou precisa depois que testes e revisão revelaram ambiguidades (v2.1, v3.1) | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] |
-| Impacto no código | Alto em velocidade; a qualidade dependeu de teste + revisão (ver [erros lógicos](../qualidade/ERROS-LOGICOS-E-REESPECIFICACAO.md)) | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] | [PREENCHER PELO GRUPO] |
+| Critério | Claude Code | Antigravity |
+|---|---|---|
+| Usada neste projeto? | Sim, em todo o ciclo | Não; avaliação de uso do autor |
+| Interface | CLI/extensão de IDE com acesso a arquivos, shell e git | Ambiente de desenvolvimento orientado a agentes |
+| Pontos fortes | Raciocínio e lógica de produção: decomposição de requisitos, código, testes, build e commits atômicos; respeita regras do `CLAUDE.md` | Forte em design e interface visual |
+| Limitações | Gerou 2 defeitos de cálculo (E1, E2) que só a revisão humana pegou; precisa de regras explícitas para não commitar segredos nem ir direto à `main`; não verifica o que existe só no GitHub (CI, branch protection) sem o `gh` instalado | Menos indicada, na avaliação do autor, para lógica e produção de código do que o Claude |
+| Impacto na especificação | Ajudou a decompor requisitos e manter ADRs; a spec só ficou precisa depois que testes e revisão revelaram ambiguidades (v2.1, v3.1) | Não avaliado neste projeto |
+| Impacto no código | Alto em velocidade; a qualidade dependeu de teste + revisão (ver [erros lógicos](../qualidade/ERROS-LOGICOS-E-REESPECIFICACAO.md)) | Não avaliado neste projeto |
 
-**Método sugerido para completar a comparação:** aplicar a mesma tarefa
-pequena (por exemplo, "escreva testes de borda para
-`calculateFinancialHealth`") em cada ferramenta e comparar acertos, tempo e
-quantidade de correção humana necessária.
+**Codex CLI e Cursor:** não utilizados; sem avaliação.
+
+**Conclusão.** O Claude se mostrou mais forte em lógica e produção; o
+Antigravity, em design. Mas a ferramenta pesa menos que a forma de usá-la:
+com boa gestão de prompts, organização do trabalho com IA e uso de recursos
+como *skills* e servidores MCP, as duas entregam bom resultado. Neste
+projeto, o que sustentou a qualidade foi o processo (spec, testes,
+ADRs, revisão humana), não a escolha da ferramenta.
 
 ## 2. Alucinação de código e código inseguro ou destrutivo
 
@@ -96,7 +100,26 @@ Aprovar um PR sem ler o diff transfere a responsabilidade para a máquina, e
 
 ## 6. Relato de experiência (comunicação técnica)
 
-**[PREENCHER PELO GRUPO]** Aprendizados e desafios do desenvolvimento em
-grupo: divisão de tarefas, conflitos de merge, o que a revisão entre pares
-pegou e o que faria diferente. Esta seção precisa refletir a experiência
-real da equipe.
+O trabalho foi individual, conduzido com o Claude Code seguindo
+Especificação Dirigida por Testes: especificação primeiro, depois tarefas
+pequenas, cada uma com implementação e revisão antes da seguinte.
+
+**O que funcionou**
+- Decisões registradas como ADRs na hora em que foram tomadas, o que
+  deixou o "porquê" rastreável.
+- Isolar a lógica de cálculo em funções puras (ADR 0005), o que tornou os
+  bugs reproduzíveis por teste.
+- Regras explícitas no `CLAUDE.md` (sem segredos, sem commit na `main`),
+  que o agente passou a seguir.
+
+**Desafios**
+- Código gerado que parece correto e roda sem erro, mas calcula errado
+  (E1, E2, E3): só a revisão e os testes de borda pegaram.
+- Manter o escopo pequeno: a spec precisou ser reescrita (v1 para v2) para
+  cortar Open Finance e manter o custo zero.
+- Ajustar a spec quando a regra de cobertura se mostrou ampla demais (v3.1).
+
+**Aprendizado central:** a IA acelera, mas a qualidade vem de teste, spec
+clara e revisão humana. Por ser trabalho individual, a revisão foi feita
+pelo próprio autor, o que é uma limitação reconhecida: não há segunda
+pessoa conferindo.

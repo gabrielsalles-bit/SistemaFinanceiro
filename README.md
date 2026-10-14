@@ -124,6 +124,7 @@ navegar por toda a documentação do projeto. Atalhos diretos:
 - `feature/<nome>` — uma branch por unidade de trabalho, criada a partir de
   `develop`.
 - Mudanças chegam a `develop` (e periodicamente a `main`) via Pull Request
-  com pelo menos uma revisão antes do merge.
+  com revisão antes do merge (projeto individual: o autor revisa o próprio
+  diff, conforme o checklist do template de PR).
 - Decisão de arquitetura nova → registrar como ADR em `docs/adr/` junto da
   mudança, não depois.
