@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "test": "node --import tsx --test src/utils/insights.test.ts src/utils/csvXlsxParser.test.ts src/utils/pin.test.ts"
+    "test": "node --import tsx --test src/utils/insights.test.ts src/utils/csvXlsxParser.test.ts src/utils/pin.test.ts src/utils/formatters.test.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.112.2",
