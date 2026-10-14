@@ -26,6 +26,29 @@ mensal, histórico completo e análises baseadas em dados reais.
 - `papaparse` e `xlsx` para importação de extratos
 - Testes com o test runner nativo do Node.js (`node --test`)
 
+## Arquitetura
+
+```mermaid
+flowchart LR
+  U[Usuário] --> LOCK[AppSecurityLock<br/>PIN com hash local]
+  LOCK --> PAGE[src/app/page.tsx<br/>estado da aplicação]
+  PAGE --> UI[Componentes React<br/>dashboard, extrato, análise, modais]
+  UI -->|importa extrato| IMP[CSVImporterModal<br/>revisão humana + duplicatas]
+  PAGE --> UTILS[src/utils<br/>funções puras testadas]
+  PAGE --> STORE[services/storage.ts]
+  STORE -->|sempre| LS[(localStorage<br/>offline-first)]
+  STORE -->|online| SB[(Supabase<br/>PostgreSQL)]
+  SB -.->|reconexão: attachOnlineSync| STORE
+```
+
+Fluxo de um lançamento: o usuário salva no modal, o estado da página é
+atualizado e gravado de imediato em `localStorage` (funciona offline); com
+rede, `StorageService` faz `upsert` no Supabase e o indicador de
+sincronização passa de `syncing` para `synced`. Ao reconectar,
+`attachOnlineSync` reenvia o que ficou pendente. Cálculos e regras vivem em
+`src/utils/`, sem depender de React (ver
+[ADR 0005](docs/adr/0005-logica-pura-separada-para-testabilidade.md)).
+
 ## Como rodar localmente
 
 ```bash
@@ -69,9 +92,10 @@ são passadas como `build.args` no `docker-compose.yml` — ver
 npm run test
 ```
 
-Suíte com 20 testes cobrindo a lógica de cálculo financeiro
+Suíte com 30 testes cobrindo a lógica de cálculo financeiro
 (`src/utils/insights.ts`), o parser de importação de extrato
-(`src/utils/csvXlsxParser.ts`) e o hash de PIN (`src/utils/pin.ts`),
+(`src/utils/csvXlsxParser.ts`), o hash de PIN (`src/utils/pin.ts`) e
+formatação/saúde financeira (`src/utils/formatters.ts`),
 incluindo casos de borda como comparação de tendência restrita a meses
 anteriores e projeção de fechamento de mês. Evidência da última execução
 salva em [`docs/test-evidence/`](docs/test-evidence/).
