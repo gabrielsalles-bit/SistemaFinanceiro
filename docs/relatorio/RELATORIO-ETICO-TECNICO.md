@@ -11,7 +11,7 @@
 
 | Critério | Claude Code | Antigravity |
 |---|---|---|
-| Usada neste projeto? | Sim, em todo o ciclo | Não; avaliação de uso do autor |
+| Usada neste projeto? | Sim, em todo o ciclo | Não; avaliação de uso do grupo |
 | Interface | CLI/extensão de IDE com acesso a arquivos, shell e git | Ambiente de desenvolvimento orientado a agentes |
 | Pontos fortes | Raciocínio e lógica de produção: decomposição de requisitos, código, testes, build e commits atômicos; respeita regras do `CLAUDE.md` | Forte em design e interface visual |
 | Limitações | Gerou 2 defeitos de cálculo (E1, E2) que só a revisão humana pegou; precisa de regras explícitas para não commitar segredos nem ir direto à `main`; não verifica o que existe só no GitHub (CI, branch protection) sem o `gh` instalado | Menos indicada, na avaliação do autor, para lógica e produção de código do que o Claude |
