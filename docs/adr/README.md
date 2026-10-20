@@ -13,3 +13,4 @@ tomadas — ver regra em [`../../CLAUDE.md`](../../CLAUDE.md).
 | [0004](0004-pin-local-sem-autenticacao-de-servidor.md) | PIN local como trava de interface, sem autenticação de servidor | Aceito |
 | [0005](0005-logica-pura-separada-para-testabilidade.md) | Lógica de cálculo isolada em módulos puros e testáveis | Aceito |
 | [0006](0006-decisoes-futuras.md) | Escopo explicitamente adiado (débito/crédito, múltiplos cartões) | Proposto |
+| [0007](0007-atualizacao-de-dependencias-na-release-1-0.md) | Atualização de dependências na release 1.0 (Next 15, React 19, SheetJS 0.20.3) | Aceito |

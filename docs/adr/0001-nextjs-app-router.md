@@ -27,3 +27,6 @@ Usar Next.js 14 com App Router, React 18 e TypeScript.
   prática, uma única página (SPA-like) com componentes internos.
 - Acopla o projeto ao ecossistema Next.js/Vercel — aceitável dado que ambos
   são gratuitos no nível de uso deste projeto.
+
+## Atualização (v1.0.0)
+A versão em uso na release final é Next.js 15.5 com React 19; a troca está justificada no [ADR 0007](0007-atualizacao-de-dependencias-na-release-1-0.md). A decisão original (App Router + TypeScript) permanece.
