@@ -53,7 +53,7 @@ derivadas dos dados reais do usuário.
 | RNF03 | Interface em português do Brasil, com formatação monetária brasileira (R$, separador de milhar `.`, decimal `,`) |
 | RNF04 | Persistência local funcional mesmo sem rede (localStorage como cache, fila de sincronização) |
 | RNF05 | Nenhum dado sensível (senha, PIN em texto puro) deve ser armazenado ou trafegado sem hash |
-| RNF06 | Cobertura de teste automatizado para toda a lógica de cálculo financeiro (projeções, tendências, taxa de poupança) e para o parser de importação |
+| RNF06 | Toda função **pura** exportada de `src/utils/` (cálculo financeiro, formatação, regras de saúde/semáforo, mapeamento do parser de extrato, hash de PIN) tem teste automatizado com pelo menos um caso de borda. Funções de I/O (`parseCSVFile`, `parseXLSXFile`, dependentes de `File`) e dados de apresentação (`categoryIcons`) ficam fora da suíte unitária |
 
 ## 5. Fora de escopo (decisão consciente)
 
@@ -115,7 +115,9 @@ o modelo de acesso adotado.
 | v1 | Escopo inicial incluía integração bancária automática (Open Finance) e envio de e-mail | Ambos dependiam de serviços pagos, incompatível com o requisito de custo zero |
 | v2 | Escopo reduzido a lançamento manual + importação de extrato assistida (CSV/Excel, com revisão humana antes de confirmar) | Mantém a conveniência de não digitar tudo à mão sem reintroduzir dependência de API paga nem risco de lançamento incorreto sem revisão |
 | v2.1 | RF07/RF08 (comparação com meses anteriores e projeção de fechamento) reespecificados após dois bugs de cálculo encontrados em revisão: comparação incluía meses futuros, e projeção de mês fechado inflava o valor como se o mês ainda estivesse em andamento | A especificação original não deixava explícito que a projeção só faz sentido para o mês corrente — comportamento corrigido e coberto por teste de regressão |
-| v3 (esta versão) | Adição formal de RNF06 (cobertura de teste) e desta seção de decomposição/histórico | Exigência da disciplina de Especificação Dirigida por Testes (SDD) da entrega acadêmica |
+| v3 | Adição formal de RNF06 (cobertura de teste) e desta seção de decomposição/histórico | Exigência da disciplina de Especificação Dirigida por Testes (SDD) da entrega acadêmica |
+| v3.1 | RNF06 reescrito para "funções puras" e cobertura estendida a `formatters.ts` (inclui `calculateFinancialHealth`); correção de `formatDate` (E3) | Auditoria de cobertura encontrou funções sem teste; o teste de borda de `formatDate` revelou um defeito real — ver [`../qualidade/ERROS-LOGICOS-E-REESPECIFICACAO.md`](../qualidade/ERROS-LOGICOS-E-REESPECIFICACAO.md) |
+| v4.0 (esta versão) | Versão final: o sistema como entregue na release 1.0.0 está documentado em [`ESPECIFICACAO-AS-BUILT.md`](ESPECIFICACAO-AS-BUILT.md), com limitações conhecidas explicitadas (L1 a L8) | Exigência de especificação As-Built na entrega final; a auditoria de higienização revelou dependências vulneráveis (ADR 0007) e o comportamento do remoto na carga (L8) |
 
 ## 9. Critérios de aceitação (resumo)
 
