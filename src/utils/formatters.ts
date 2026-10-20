@@ -1,4 +1,4 @@
-import { Category, FinancialHealth, Transaction } from '@/types/finance';
+import { FinancialHealth } from '@/types/finance';
 
 /**
  * Formata um valor numérico para Real Brasileiro (R$)

@@ -4,6 +4,9 @@
 
 | Documento | O que encontra |
 |---|---|
+| [`spec/ESPECIFICACAO-AS-BUILT.md`](spec/ESPECIFICACAO-AS-BUILT.md) | **Especificação definitiva (As-Built):** o sistema exatamente como foi entregue na v1.0.0 — arquitetura, contratos, rastreabilidade e limitações |
+| [`RETROSPECTIVA.md`](RETROSPECTIVA.md) | Retrospectiva do grupo: eficácia do uso de IA no fluxo SDD, dificuldades e lições de governança |
+| [`demo/ROTEIRO-VIDEO.md`](demo/ROTEIRO-VIDEO.md) | Roteiro do vídeo de demonstração (3 a 5 minutos) |
 | [`spec/ESPECIFICACAO.md`](spec/ESPECIFICACAO.md) | Especificação técnica (SDD): requisitos funcionais e não funcionais, decomposição do sistema em módulos, modelo de dados, histórico de refinamento da especificação e critérios de aceitação |
 | [`adr/`](adr/README.md) | Registros de decisão de arquitetura (ADRs) — por que cada escolha técnica foi feita, alternativas consideradas e consequências |
 | [`test-evidence/`](test-evidence/) | Evidência salva de execução da suíte de testes automatizada (complementa o [pipeline de CI](../.github/workflows/ci.yml), que roda a cada push/PR) |

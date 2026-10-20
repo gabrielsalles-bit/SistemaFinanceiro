@@ -28,11 +28,9 @@ export const FullExtractView: React.FC<FullExtractViewProps> = ({
 }) => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategoryFilter, setSelectedCategoryFilter] = useState<string>('ALL');
-  const [typeFilter, setTypeFilter] = useState<'ALL' | 'INCOME' | 'EXPENSE'>('ALL');
 
   const filtered = transactions.filter((tx) => {
     if (selectedCategoryFilter !== 'ALL' && tx.categoryId !== selectedCategoryFilter) return false;
-    if (typeFilter !== 'ALL' && tx.type !== typeFilter) return false;
     if (searchTerm.trim()) {
       const term = searchTerm.toLowerCase();
       const matchDesc = tx.description.toLowerCase().includes(term);

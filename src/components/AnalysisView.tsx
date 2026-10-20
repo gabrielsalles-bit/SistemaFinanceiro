@@ -70,7 +70,6 @@ export const AnalysisView: React.FC<AnalysisViewProps> = ({ transactions, catego
   const isCurrentMonth = year === today.getFullYear() && month === today.getMonth();
   const isPastMonth =
     !isCurrentMonth && (year < today.getFullYear() || (year === today.getFullYear() && month < today.getMonth()));
-  const isFutureMonth = !isCurrentMonth && !isPastMonth;
 
   const projection = isCurrentMonth ? projectMonthEndTotal(totalExpense, today) : null;
   const totalLimit = categories.reduce((sum, c) => sum + c.monthlyLimit, 0);

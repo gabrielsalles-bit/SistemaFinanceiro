@@ -24,7 +24,6 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
   const [newCatName, setNewCatName] = useState('');
   const [newCatLimit, setNewCatLimit] = useState('');
   const [newCatKeywords, setNewCatKeywords] = useState('');
-  const [newCatIcon, setNewCatIcon] = useState('Tag');
 
   // Synchronize items with categories prop whenever modal opens or categories change
   useEffect(() => {
@@ -50,7 +49,7 @@ export const CategoryModal: React.FC<CategoryModalProps> = ({
     const newCat: Category = {
       id: `cat-${Date.now()}`,
       name: newCatName.trim(),
-      icon: newCatIcon,
+      icon: 'Tag',
       monthlyLimit: limit,
       keywords: keywordsList,
     };

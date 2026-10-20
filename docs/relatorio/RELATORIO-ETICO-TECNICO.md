@@ -1,8 +1,8 @@
 # Relatório técnico-ético: uso de agentes de IA no ciclo de vida do projeto
 
-> **Como ler este relatório.** O projeto foi desenvolvido de forma
-> individual e **só o Claude Code foi usado em todo o ciclo**. O
-> Antigravity entra na comparação pela avaliação de uso do autor, não por
+> **Como ler este relatório.** **Só o Claude Code foi usado em todo o
+> ciclo de desenvolvimento deste repositório**. O
+> Antigravity entra na comparação pela avaliação de uso do grupo, não por
 > ter sido usado neste repositório. Codex CLI e Cursor não foram usados e
 > por isso não são avaliados. As afirmações sobre o Claude Code apontam
 > para evidências (commits, testes, ADRs).
@@ -11,7 +11,7 @@
 
 | Critério | Claude Code | Antigravity |
 |---|---|---|
-| Usada neste projeto? | Sim, em todo o ciclo | Não; avaliação de uso do autor |
+| Usada neste projeto? | Sim, em todo o ciclo | Não; avaliação de uso do grupo |
 | Interface | CLI/extensão de IDE com acesso a arquivos, shell e git | Ambiente de desenvolvimento orientado a agentes |
 | Pontos fortes | Raciocínio e lógica de produção: decomposição de requisitos, código, testes, build e commits atômicos; respeita regras do `CLAUDE.md` | Forte em design e interface visual |
 | Limitações | Gerou 2 defeitos de cálculo (E1, E2) que só a revisão humana pegou; precisa de regras explícitas para não commitar segredos nem ir direto à `main`; não verifica o que existe só no GitHub (CI, branch protection) sem o `gh` instalado | Menos indicada, na avaliação do autor, para lógica e produção de código do que o Claude |
@@ -100,7 +100,7 @@ Aprovar um PR sem ler o diff transfere a responsabilidade para a máquina, e
 
 ## 6. Relato de experiência (comunicação técnica)
 
-O trabalho foi individual, conduzido com o Claude Code seguindo
+O desenvolvimento foi conduzido com o Claude Code seguindo
 Especificação Dirigida por Testes: especificação primeiro, depois tarefas
 pequenas, cada uma com implementação e revisão antes da seguinte.
 
@@ -120,6 +120,6 @@ pequenas, cada uma com implementação e revisão antes da seguinte.
 - Ajustar a spec quando a regra de cobertura se mostrou ampla demais (v3.1).
 
 **Aprendizado central:** a IA acelera, mas a qualidade vem de teste, spec
-clara e revisão humana. Por ser trabalho individual, a revisão foi feita
-pelo próprio autor, o que é uma limitação reconhecida: não há segunda
-pessoa conferindo.
+clara e revisão humana. A revisão dos PRs foi feita pelo autor de cada
+PR, com o checklist do template; não há review entre pares registrado
+no GitHub, o que é uma limitação reconhecida.

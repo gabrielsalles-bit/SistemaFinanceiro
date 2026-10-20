@@ -29,18 +29,6 @@ export interface FinancialHealth {
   tip: string;
 }
 
-export interface MonthlyBudgetSummary {
-  monthName: string;
-  year: number;
-  totalIncome: number;
-  totalExpense: number;
-  totalInvestment: number;
-  monthlyBalance: number; // Income - Expense
-  finalBalance: number; // MonthlyBalance - Investment
-  totalLimit: number;
-  availableBudget: number;
-}
-
 export interface UserPreferences {
   userName: string;
   baseSalary: number; // Salário base mensal configurável (ex: R$ 1000)

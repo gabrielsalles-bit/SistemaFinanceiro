@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { X, Calendar, DollarSign, Tag, ArrowUpRight, ArrowDownRight, PiggyBank } from 'lucide-react';
+import { X, ArrowUpRight, ArrowDownRight, PiggyBank } from 'lucide-react';
 import { Category, Transaction, TransactionType } from '@/types/finance';
 
 interface TransactionModalProps {

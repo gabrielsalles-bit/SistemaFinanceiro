@@ -1,13 +1,21 @@
 # syntax=docker/dockerfile:1
 
 # --- Etapa 1: instalar dependências ---
-FROM node:20-alpine AS deps
+FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm ci
 
+# --- Etapa de testes: `docker compose run --rm test` ---
+# Roda a suíte completa e o relatório de cobertura sem precisar de Node local.
+FROM node:22-alpine AS test
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+CMD ["npm", "run", "test:coverage"]
+
 # --- Etapa 2: build de produção ---
-FROM node:20-alpine AS builder
+FROM node:22-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
@@ -20,7 +28,7 @@ ENV NEXT_PUBLIC_SUPABASE_ANON_KEY=$NEXT_PUBLIC_SUPABASE_ANON_KEY
 RUN npm run build
 
 # --- Etapa 3: imagem final, só com o necessário para rodar ---
-FROM node:20-alpine AS runner
+FROM node:22-alpine AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 

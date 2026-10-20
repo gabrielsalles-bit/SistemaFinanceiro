@@ -3,7 +3,7 @@
 
 import React from 'react';
 import {
-  LayoutDashboard, Receipt, PieChart, Settings, Eye, EyeOff, Bell, Plus, Heart,
+  LayoutDashboard, Receipt, PieChart, Settings, Eye, EyeOff, Bell, Plus,
   Cloud, CloudOff, RefreshCw,
 } from 'lucide-react';
 import { SyncState } from '@/services/storage';
