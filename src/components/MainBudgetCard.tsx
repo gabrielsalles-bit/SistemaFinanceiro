@@ -9,7 +9,6 @@ import { Card } from '@/components/ui/Card';
 interface MainBudgetCardProps {
   currentMonth: number;
   currentYear: number;
-  totalIncome: number;
   baseSalary: number;
   totalExpense: number;
   totalInvestment: number;
@@ -27,7 +26,6 @@ interface MainBudgetCardProps {
 export const MainBudgetCard: React.FC<MainBudgetCardProps> = ({
   currentMonth,
   currentYear,
-  totalIncome,
   baseSalary,
   totalExpense,
   totalInvestment,

@@ -212,7 +212,6 @@ export default function Dashboard() {
               <MainBudgetCard
                 currentMonth={currentDate.getMonth()}
                 currentYear={currentDate.getFullYear()}
-                totalIncome={totalIncome}
                 baseSalary={userPrefs.baseSalary}
                 totalExpense={totalExpense}
                 totalInvestment={totalInvestment}
